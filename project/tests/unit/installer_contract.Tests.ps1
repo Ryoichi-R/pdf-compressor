@@ -92,10 +92,10 @@ Describe 'root README contract' {
         $text | Should -Match 'SHA-256'
     }
 
-    It 'states the copyright holder and the AGPL-3.0 license' {
+    It 'states the copyright holder and the MIT license' {
         $text = Get-Content -LiteralPath $script:rootReadmePath -Raw
         $text | Should -Match 'Copyright \(c\) 2026 Ryoichi-R'
-        $text | Should -Match 'AGPL-3\.0'
+        $text | Should -Match 'MIT License'
     }
 }
 

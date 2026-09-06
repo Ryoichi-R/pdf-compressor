@@ -3,7 +3,7 @@
 ## Result
 
 ARM64 native payload work was resumed on the independent Windows x64 host
-`C:\coding\workspace-control`. The reverse runtime-switch path in the x64-only
+private development workspace. The reverse runtime-switch path in the x64-only
 entry profile was corrected so the second installer invocation captures the
 dynamic `%ERRORLEVEL%` inside the parenthesized batch block. The shipped root
 entry, x64-only template, and package entry remain byte-identical after the
@@ -21,7 +21,7 @@ historical; the current candidate and superseding evidence are recorded in
 
 ## Host binding
 
-- Git HEAD at test start: `7a1e81392267b4c92339a4eb485198ed7e23810d`
+- Git revision at test start: pre-separation private-workspace revision (not part of standalone history)
 - OS / process architecture: `X64` / `X64`
 - `PROCESSOR_ARCHITECTURE`: `AMD64`
 - .NET SDK: `10.0.204`

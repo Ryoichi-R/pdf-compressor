@@ -8,9 +8,9 @@ canonical payloadの作成・変更・promotion、release、commit、push、公�
 
 ## Initial candidate binding
 
-- Workspace / Git root: `C:\coding\workspace-control`
-- Project: `C:\coding\workspace-control\pdf-compressor\project`
-- Plan: `C:\coding\workspace-control\plans\old\20260905_pdf-compressor-arm64-native-payload-plan.md`
+- Workspace / Git root: pre-separation private development workspace
+- Project: `project/`
+- Plan: owner-local historical ARM64 plan (not included in this repository)
 - Plan SHA-256: `C9C2F4F2C27113329C69617F9F4BFF9C320002325656422F0FBB14E27325A94C`
 - Candidate: `pdf-compressor/project/installer/candidates/20260905T1416JST-arm64-native`
 - Build ID: `pdfc-1.1.0-win-arm64-590af5150af8294b`

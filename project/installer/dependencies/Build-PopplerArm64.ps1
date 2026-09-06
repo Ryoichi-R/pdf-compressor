@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Ryoichi-R
-# Licensed under the GNU Affero General Public License version 3 or later.
+# Licensed under the MIT License.
 # See LICENSE in the repository root for the full license text.
 
 [CmdletBinding()]
@@ -20,13 +20,13 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
 
-function Assert-WorkspaceWriteTarget([string]$Path) {
+function Assert-RepositoryWriteTarget([string]$Path) {
     $resolved = [IO.Path]::GetFullPath($Path)
-    if ($resolved -ne $workspaceRoot -and
-        -not $resolved.StartsWith($workspaceRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
-        throw "Refusing to write outside workspaceRoot: $resolved"
+    if ($resolved -ne $repositoryRoot -and
+        -not $resolved.StartsWith($repositoryRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "Refusing to write outside repositoryRoot: $resolved"
     }
     return $resolved
 }
@@ -62,13 +62,13 @@ if ($actualSourceHash -ne $ExpectedSha256.ToUpperInvariant()) {
     throw "Poppler source hash mismatch. Expected $ExpectedSha256, got $actualSourceHash"
 }
 
-$build = Assert-WorkspaceWriteTarget $BuildRoot
-$install = Assert-WorkspaceWriteTarget $InstallRoot
-$receipt = Assert-WorkspaceWriteTarget $ReceiptPath
+$build = Assert-RepositoryWriteTarget $BuildRoot
+$install = Assert-RepositoryWriteTarget $InstallRoot
+$receipt = Assert-RepositoryWriteTarget $ReceiptPath
 $downloads = if ([string]::IsNullOrWhiteSpace($VcpkgDownloadsRoot)) {
     Join-Path $build 'downloads'
 } else {
-    Assert-WorkspaceWriteTarget $VcpkgDownloadsRoot
+    Assert-RepositoryWriteTarget $VcpkgDownloadsRoot
 }
 foreach ($target in @($build, $install, $receipt)) {
     if (Test-Path -LiteralPath $target) { throw "Refusing to overwrite existing output: $target" }

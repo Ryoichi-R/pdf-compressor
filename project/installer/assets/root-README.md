@@ -16,6 +16,8 @@ PDF本文、診断情報、利用状況を外部サービスへ送信しませ�
 
 ## インストール
 
+Release assetが掲載されていない時点では、利用者向け配布ZIPは未公開です。GitHubのsource ZIPまたはcloneには、実行に必要なbundled payloadは含まれません。
+
 GitHub Releaseから`pdf-compressor-win-x64.zip`をダウンロードし、任意のローカルフォルダーへ
 すべて展開してから`PdfCompressor.App.exe`をダブルクリックしてください。
 
@@ -60,16 +62,14 @@ GUIの出力先、戦略、モード、安全設定、目標bytes、上書き、
 
 Copyright (c) 2026 Ryoichi-R
 
-本ソフトウェアは GNU Affero General Public License version 3（AGPL-3.0）またはそれ以降の版の条件で提供します。
-ライセンス全文は`project\LICENSE`にあります。本ソフトウェアは有用であることを期待して配布されますが、**いかなる保証もありません**。
+PDF Compressor の第一者コードは [MIT License](LICENSE) の条件で提供します。
+同梱する第三者コンポーネントには、それぞれのライセンスが適用されます。
 
-上流から取得する第三者アーカイブはGit履歴に含めません。固定URLとSHA-256による取得方法は
-`project\third-party-source\README.md`を参照してください。バイナリ配布時は、同じバージョンの
+第三者のライセンス、通知、対応ソースの取得方法は
+`project\THIRD-PARTY-NOTICES.md`、`project\licenses\`、
+`project\third-party-source\README.md`を参照してください。上流アーカイブはGit履歴に含めません。
+バイナリ配布時は、GhostscriptおよびPopplerの条件を満たすため、同じバージョンの
 `pdf-compressor-corresponding-source-win-x64.zip`をGitHub Release assetとして併載します。
-商品性および特定目的への適合性についての黙示的保証もありません。
-
-同梱する Ghostscript、Poppler、qpdf、PowerShell、.NET ランタイムの条件は
-`project\THIRD-PARTY-NOTICES.md`と`project\licenses\`を参照してください。
 
 ## 脆弱性の報告
 

@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Ryoichi-R
-# Licensed under the GNU Affero General Public License version 3 or later.
+# Licensed under the MIT License.
 # See LICENSE in the repository root for the full license text.
 
 Set-StrictMode -Version Latest

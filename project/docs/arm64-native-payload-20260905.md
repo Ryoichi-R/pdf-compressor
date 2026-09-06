@@ -10,9 +10,9 @@ canonical payload の作成・変更・promotion、release、commit、push、公
 
 ## Binding
 
-- Workspace / Git root: `C:\coding\workspace-control`
-- Project: `C:\coding\workspace-control\pdf-compressor\project`
-- Plan: `C:\coding\workspace-control\plans\old\20260905_pdf-compressor-arm64-native-payload-plan.md`
+- Workspace / Git root: pre-separation private development workspace
+- Project: `project/`
+- Plan: owner-local historical ARM64 plan (not included in this repository)
 - Plan SHA-256: `C9C2F4F2C27113329C69617F9F4BFF9C320002325656422F0FBB14E27325A94C`
 - Project source inventory: 82 files、SHA-256 `3B10AE8E8B2324B8D56D6501CB240A0272585DB2E7E024F41E0CD7BA62393FE2`
 - Run: 2026-09-05 13:08–13:46 JST

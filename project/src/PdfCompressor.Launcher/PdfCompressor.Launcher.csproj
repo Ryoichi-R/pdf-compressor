@@ -13,6 +13,7 @@
     <AssemblyTitle>PDF Compressor Launcher</AssemblyTitle>
     <Company>Ryoichi-R</Company>
     <Authors>Ryoichi-R</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright (c) 2026 Ryoichi-R</Copyright>
   </PropertyGroup>
 </Project>

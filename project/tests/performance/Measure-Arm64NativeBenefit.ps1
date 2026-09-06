@@ -98,7 +98,7 @@ $receipt = [ordered]@{
     schemaVersion = 1
     status = 'not-evaluated'
     runtime = $Runtime
-    host = [ordered]@{ computerName = $env:COMPUTERNAME; osArchitecture = [string]$env:PROCESSOR_ARCHITEW6432; processorArchitecture = [string]$env:PROCESSOR_ARCHITECTURE }
+    host = [ordered]@{ osArchitecture = [string]$env:PROCESSOR_ARCHITEW6432; processorArchitecture = [string]$env:PROCESSOR_ARCHITECTURE }
     corpus = [ordered]@{ path = $corpusFull; fileCount = $files.Count; sha256 = $corpusDigest }
     warmupCount = $WarmupCount
     trialCount = $TrialCount

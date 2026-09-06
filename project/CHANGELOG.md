@@ -10,14 +10,13 @@
 
 ### Added
 
-- AGPL-3.0 の権利表示を整備した。`Copyright (c) 2026 Ryoichi-R` を README、
+- 第一者コードを MIT License とし、`Copyright (c) 2026 Ryoichi-R` を README、
   `THIRD-PARTY-NOTICES.md`、launcher の assembly metadata（`Product` / `AssemblyTitle` /
   `Company` / `Authors` / `Copyright`）に追加。これまで未署名 exe のファイルプロパティが
   空欄だった。
 - 対応ソースアーカイブに **win-x64 の build recipe を同梱**するようにした
   （`Build-Poppler.ps1` / `poppler-vcpkg.json` / `Test-PopplerSourceSignature.ps1`）。
-  AGPLv3 §1 はコンパイルとインストールを制御するスクリプトを Corresponding Source に
-  含めると定めているが、従来これらは win-arm64 でしか同梱していなかった。
+  Ghostscript の AGPL-3.0 と Poppler の GPL-2.0-or-later に従い、対応ソースと再現に必要なビルドレシピを配布物へ結び付ける。従来これらは win-arm64 でしか同梱していなかった。
 - パッケージ直下 `README.md` と配布テンプレート `installer/assets/root-README.md` の
   byte 一致を強制する契約テストを追加した。root entry BAT には同種の契約があったが
   README には無く、コード署名の開示文が片方だけに存在する drift を検出できていなかった。
