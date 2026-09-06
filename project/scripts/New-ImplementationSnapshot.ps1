@@ -9,14 +9,22 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..')).TrimEnd('\')
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
-. (Join-Path $workspaceRoot 'scripts\shared\secret-patterns.ps1')
-if (Test-SecretFilePath -FilePath $workspaceRoot) { throw 'SNAPSHOT_SECRET_PATH_REJECTED' }
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
+
+function Test-SecretFilePath([string]$FilePath) {
+    $leaf = Split-Path $FilePath -Leaf
+    foreach ($pattern in @('^\.env$', '^\.env\.', '^secrets\.', '\.key$', '\.pem$', '\.pfx$', '\.p12$', '^credentials\.')) {
+        if ($leaf -match $pattern) { return $true }
+    }
+    return $false
+}
+
+if (Test-SecretFilePath -FilePath $repositoryRoot) { throw 'SNAPSHOT_SECRET_PATH_REJECTED' }
 $outputFull = [IO.Path]::GetFullPath($OutputRoot).TrimEnd('\')
 if (Test-SecretFilePath -FilePath $outputFull) { throw 'SNAPSHOT_SECRET_PATH_REJECTED' }
-if ($outputFull -eq $workspaceRoot -or
-    -not $outputFull.StartsWith($workspaceRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'SNAPSHOT_OUTPUT_OUTSIDE_WORKSPACE'
+if ($outputFull -eq $repositoryRoot -or
+    -not $outputFull.StartsWith($repositoryRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'SNAPSHOT_OUTPUT_OUTSIDE_REPOSITORY'
 }
 if (Test-Path -LiteralPath $outputFull) { throw 'SNAPSHOT_OUTPUT_ALREADY_EXISTS' }
 
@@ -63,13 +71,13 @@ foreach ($relative in $WorkspaceBackupPath) {
     if ([string]::IsNullOrWhiteSpace($relative) -or [IO.Path]::IsPathRooted($relative)) {
         throw "WORKSPACE_BACKUP_PATH_MUST_BE_RELATIVE: $relative"
     }
-    $source = [IO.Path]::GetFullPath((Join-Path $workspaceRoot $relative))
+    $source = [IO.Path]::GetFullPath((Join-Path $repositoryRoot $relative))
     if (Test-SecretFilePath -FilePath $source) { throw 'SNAPSHOT_SECRET_PATH_REJECTED' }
-    if (-not $source.StartsWith($workspaceRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
-        throw "WORKSPACE_BACKUP_PATH_OUTSIDE_ROOT: $relative"
+    if (-not $source.StartsWith($repositoryRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "WORKSPACE_BACKUP_PATH_OUTSIDE_REPOSITORY: $relative"
     }
     if (-not (Test-Path -LiteralPath $source -PathType Leaf)) { throw "WORKSPACE_BACKUP_FILE_MISSING: $relative" }
-    $normalized = [IO.Path]::GetRelativePath($workspaceRoot, $source).Replace('\', '/')
+    $normalized = [IO.Path]::GetRelativePath($repositoryRoot, $source).Replace('\', '/')
     $destination = Join-Path $outputFull ('workspace-files\' + $normalized.Replace('/', '\'))
     [IO.Directory]::CreateDirectory((Split-Path -Parent $destination)) | Out-Null
     Copy-Item -LiteralPath $source -Destination $destination
@@ -105,8 +113,8 @@ $manifestObject = [ordered]@{
     schemaVersion = 1
     snapshotType = 'pdf-compressor-implementation-baseline'
     createdAt = [DateTimeOffset]::Now.ToString('o')
-    workspacePolicy = 'non-git-filesystem-only'
-    projectRoot = 'pdf-compressor/project'
+    workspacePolicy = 'standalone-repository-filesystem-only'
+    projectRoot = 'project'
     backupRule = 'Only explicitly listed editable files are copied; large immutable artifacts are hash inventory only.'
     files = @($files)
     workspaceBackups = @($workspaceBackups)

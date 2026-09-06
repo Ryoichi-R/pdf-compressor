@@ -9,12 +9,12 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
 $acceptanceRootFull = [IO.Path]::GetFullPath($AcceptanceRoot).TrimEnd('\')
 $candidateFull = [IO.Path]::GetFullPath($Arm64Candidate).TrimEnd('\')
 foreach ($path in @($acceptanceRootFull, $candidateFull)) {
-    if (-not $path.StartsWith($workspaceRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-        throw 'Inputs must remain under the workspace root.'
+    if (-not $path.StartsWith($repositoryRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+        throw 'Inputs must remain under the repository root.'
     }
     if (-not (Test-Path -LiteralPath $path -PathType Container)) { throw "Directory not found: $path" }
 }

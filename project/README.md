@@ -11,6 +11,8 @@ Ghostscript / qpdf / Poppler を PowerShell から駆動し、PDF 内容を解�
 
 ## 利用者向け導入
 
+Release assetが掲載されていない時点では、利用者向け配布ZIPは未公開である。GitHubのsource ZIPまたはcloneには、実行に必要なbundled payloadは含まれない。
+
 GitHub Releaseの`pdf-compressor-win-x64.zip`を任意のローカルフォルダーへすべて展開し、
 `PdfCompressor.App.exe`（GUI）または`compress.bat`（CLI）を起動する。
 x64 payloadにはPowerShell 7、Ghostscript、qpdf、Popplerを同梱しているため、
@@ -43,29 +45,13 @@ installerはmanaged file変更前に、fresh=`2Enew+H`、update=`Enew+Ecurrent+H
 
 Copyright (c) 2026 Ryoichi-R
 
-```
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+PDF Compressor の第一者コードは [MIT License](LICENSE) の条件で提供する。
+同梱する第三者コンポーネントには、それぞれのライセンスが適用される。
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-```
-
-本ソフトウェアはローカル処理専用であり、ネットワーク越しに利用者へサービスを提供しない。
-そのため AGPL-3.0 第13条（ネットワーク経由の利用者に対する対応ソース提供）は実質的に発動しないが、
-配布物を第三者へ引き渡す場合は第6条の対応ソース提供義務が適用される。
-
-ライセンス、第三者通知、対応ソースの取得方法は`LICENSE`、`THIRD-PARTY-NOTICES.md`、
+第三者のライセンス、通知、対応ソースの取得方法は`THIRD-PARTY-NOTICES.md`、
 `licenses\`、`third-party-source\README.md`を参照する。上流アーカイブはGit履歴へ含めず、
-バイナリ配布時は同じバージョンの`pdf-compressor-corresponding-source-win-x64.zip`を
-GitHub Release assetとして併載する。
+バイナリ配布時は、GhostscriptおよびPopplerの条件を満たすため、同じバージョンの
+`pdf-compressor-corresponding-source-win-x64.zip`をGitHub Release assetとして併載する。
 
 ### コード署名の状態
 
@@ -281,7 +267,7 @@ fixture provenance が不足すると exit 2 で止まり、`-AllowMissingExtern
 release証拠のstrict E2Eは、検証済みcandidateを空directoryへ展開し、
 `PDF_COMPRESSOR_INSTALL_ROOT`でbundled toolだけを解決する。machine PATH依存結果はrelease証拠にしない。
 Tier C0 coverage targetは`_internal/data/coverage-targets.json`の19 core filesに対して90%。
-10 MiB / 50 page のpreflight＋post-validation baselineは、`tests\performance\Measure-PdfValidationBaseline.ps1`でwarm-up後5回以上を測定し、`result\pdf-compressor\performance-validation-baseline-*.json`へhost/toolchain付きで保存する。2026-08-12の現行baseline中央値は2,541.047 ms、同一host/toolchainでの次回上限は3,811.570 ms（1.5B）。Ghostscript戦略、queue規模、cancel、target-size資源量は別計測である。
+10 MiB / 50 page のpreflight＋post-validation baselineは、`tests\performance\Measure-PdfValidationBaseline.ps1`でwarm-up後5回以上を測定し、`_work\performance-validation-baseline-*.json`へ匿名化したhost architecture/toolchain付きで保存する。2026-08-12の現行baseline中央値は2,541.047 ms、同一host/toolchainでの次回上限は3,811.570 ms（1.5B）。Ghostscript戦略、queue規模、cancel、target-size資源量は別計測である。
 
 ## candidate build
 

@@ -1,7 +1,6 @@
 # Third-party notices
 
-PDF Compressor 本体は Copyright (c) 2026 Ryoichi-R であり、配布物は
-GNU Affero General Public License version 3（`LICENSE`）の条件で提供します。
+PDF Compressor の第一者コードは Copyright (c) 2026 Ryoichi-R であり、MIT License（`LICENSE`）の条件で提供します。第三者コンポーネントには、以下の各ライセンスが適用されます。
 次の未改変コンポーネントを同梱します。
 
 | Component | Version | Source / artifact | License |

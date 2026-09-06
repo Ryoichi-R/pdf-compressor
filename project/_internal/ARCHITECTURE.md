@@ -325,7 +325,5 @@ pdf-compressor はプロジェクトルート配下だけを読み書きする�
 
 ### 関連ドキュメント
 
-- ワークスペース横断 TODO インデックス: [../../TODO.md](../../TODO.md)（workspace 内部。単独リポジトリとして公開する際は除去する）
-- 一般公開 master plan: [../../plans/pdf-compressor-public-release-master-plan.md](../../plans/pdf-compressor-public-release-master-plan.md)
-- 旧セルフレビュー計画 `plans/pdf-compressor-self-review-fixplan.md` は消失しており参照できない（2026-09-04 確認）。P1-5 / P1-10 / P1-14 の実施内容は上表と `TODO.md` の Completed 節を正本とする。
-- PR1〜PR5 適用済差分: `git log --oneline _internal/`
+- 分離前の workspace 横断 TODO、一般公開 master plan、旧セルフレビュー計画は owner-local の履歴資料であり、この standalone repository には含めない。
+- 分離前に PR1〜PR5 として管理していた実施内容は、上表と現在の source / tests を正本とする。standalone repository の履歴は初回公開用 commit から始まるため、旧 workspace の commit 履歴は参照できない。

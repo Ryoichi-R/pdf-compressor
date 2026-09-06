@@ -8,8 +8,8 @@ canonical payloadの変更・promotion、release、commit、push、公開は実�
 
 ## Binding
 
-- Workspace / Git root: `C:\coding\workspace-control`
-- Plan: `C:\coding\workspace-control\plans\old\20260905_pdf-compressor-arm64-native-payload-plan.md`
+- Workspace / Git root: pre-separation private development workspace
+- Plan: owner-local historical ARM64 plan (not included in this repository)
 - Plan SHA-256 at GUI execution: `C9C2F4F2C27113329C69617F9F4BFF9C320002325656422F0FBB14E27325A94C`
 - Plan SHA-256 after status update: `26DA046AC332D2BE7173DC347AC1DD01A066435A0D93FF88A9B6468949F24C46`
 - Candidate: `pdf-compressor/project/installer/candidates/20260905T1445JST-arm64-gui-fix-2`

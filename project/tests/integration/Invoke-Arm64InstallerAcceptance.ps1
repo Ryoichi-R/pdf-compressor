@@ -9,11 +9,11 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
 $outputRootFull = [IO.Path]::GetFullPath($OutputRoot).TrimEnd('\')
 $candidateFull = [IO.Path]::GetFullPath($Arm64Candidate).TrimEnd('\')
-if (-not $outputRootFull.StartsWith($workspaceRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'OutputRoot must remain under the workspace root.'
+if (-not $outputRootFull.StartsWith($repositoryRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'OutputRoot must remain under the repository root.'
 }
 if (Test-Path -LiteralPath $outputRootFull) { throw "OutputRoot already exists: $outputRootFull" }
 if (-not (Test-Path -LiteralPath $candidateFull -PathType Container)) { throw "ARM64 candidate not found: $candidateFull" }

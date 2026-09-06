@@ -10,7 +10,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..')).TrimEnd('\')
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
 $candidate = [IO.Path]::GetFullPath($CandidateRoot).TrimEnd('\')
 if (-not $candidate.StartsWith($projectRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
     throw 'CandidateRoot must be inside the PDF Compressor project root.'
@@ -21,11 +21,11 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
 }
 if ([string]::IsNullOrWhiteSpace($ReceiptPath)) {
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ')
-    $ReceiptPath = Join-Path $workspaceRoot "result\pdf-compressor\performance-target-size-worst-case-$stamp.json"
+    $ReceiptPath = Join-Path $projectRoot "_work\performance-target-size-worst-case-$stamp.json"
 }
 $ReceiptPath = [IO.Path]::GetFullPath($ReceiptPath)
-if (-not $ReceiptPath.StartsWith($workspaceRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'ReceiptPath must be inside the workspace root.'
+if (-not $ReceiptPath.StartsWith($repositoryRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'ReceiptPath must be inside the repository root.'
 }
 
 . (Join-Path $projectRoot 'tests\support\New-SyntheticPdf.ps1')

@@ -5,14 +5,14 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..')).TrimEnd('\')
-$workspaceRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..\..')).TrimEnd('\')
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot '..')).TrimEnd('\')
 if ([string]::IsNullOrWhiteSpace($ReceiptPath)) {
     $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ')
-    $ReceiptPath = Join-Path $workspaceRoot "result\pdf-compressor\performance-gui-queue-scale-$stamp.json"
+    $ReceiptPath = Join-Path $projectRoot "_work\performance-gui-queue-scale-$stamp.json"
 }
 $ReceiptPath = [IO.Path]::GetFullPath($ReceiptPath)
-if (-not $ReceiptPath.StartsWith($workspaceRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'ReceiptPath must be inside the workspace root.'
+if (-not $ReceiptPath.StartsWith($repositoryRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'ReceiptPath must be inside the repository root.'
 }
 
 . (Join-Path $projectRoot '_internal\gui-queue.ps1')

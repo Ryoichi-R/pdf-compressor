@@ -37,7 +37,7 @@ manual acceptance, and legal/trust-boundary decisions listed below are complete.
   Runtime reports 10.07.1. AGPL-3.0 text and corresponding source archive
   included.
 
-The application distribution is licensed under AGPL-3.0. No OCR provider is
+The first-party application code is licensed under MIT. Bundled third-party components retain their own licenses. No OCR provider is
 bundled. The canonical package remains x64-only: a native ARM64 candidate has
 been built, but it has not been promoted or shipped. ARM64 hosts therefore install the same
 verified win-x64 payload and run it under Windows built-in x64 emulation.

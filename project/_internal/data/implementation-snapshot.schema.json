@@ -8,8 +8,8 @@
     "schemaVersion": { "const": 1 },
     "snapshotType": { "const": "pdf-compressor-implementation-baseline" },
     "createdAt": { "type": "string", "format": "date-time" },
-    "workspacePolicy": { "const": "non-git-filesystem-only" },
-    "projectRoot": { "const": "pdf-compressor/project" },
+    "workspacePolicy": { "const": "standalone-repository-filesystem-only" },
+    "projectRoot": { "const": "project" },
     "backupRule": { "type": "string", "minLength": 1 },
     "files": {
       "type": "array",
