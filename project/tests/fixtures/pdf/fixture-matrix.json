@@ -1,0 +1,77 @@
+{
+    "version": "1.0",
+    "fixture_set": "public-v1-safety-tier2-contract",
+    "scenarios": [
+        {
+            "id": "text-vector",
+            "kind": "synthetic-real",
+            "fixture": "generated-text-1.pdf",
+            "expected": { "page_count": 1, "rotation": [0] }
+        },
+        {
+            "id": "image-content",
+            "kind": "synthetic-real",
+            "fixture": "generated-raster.pdf",
+            "feature": "image_ratio_high",
+            "expected": { "mode": "standard" }
+        },
+        {
+            "id": "multi-page",
+            "kind": "synthetic-real",
+            "fixture": "generated-pages-3.pdf",
+            "expected": { "page_count": 3 }
+        },
+        {
+            "id": "interactive-features",
+            "kind": "synthetic-real",
+            "fixture": "generated-interactive.pdf",
+            "features": [
+                "acroform",
+                "annotations",
+                "links",
+                "attachments",
+                "outlines"
+            ]
+        },
+        {
+            "id": "structure-rotation",
+            "kind": "synthetic-real",
+            "fixture": "generated-rotate-3.pdf",
+            "expected": { "page_count": 3, "rotation": [0, 90, 180] }
+        },
+        {
+            "id": "standards",
+            "kind": "policy-model",
+            "features": ["pdfa", "pdfx", "tagged", "layers"]
+        },
+        {
+            "id": "security",
+            "kind": "mixed",
+            "generated_fixture": "generated-encrypted.pdf",
+            "curated_required": "signed",
+            "features": ["digital_signature", "encrypted"]
+        },
+        {
+            "id": "failure",
+            "kind": "contract",
+            "cases": [
+                "qpdf-exit-0",
+                "qpdf-exit-2",
+                "qpdf-exit-3",
+                "indeterminate-structure"
+            ]
+        },
+        {
+            "id": "strategies",
+            "kind": "policy-model",
+            "strategies": [
+                "qpdf-lossless",
+                "gs-downsample-150",
+                "gs-downsample-180",
+                "gs-light-regenerate",
+                "gs-raster-low-quality",
+                "gs-raster-readable"
+            ]
+        }
+    ]
+}

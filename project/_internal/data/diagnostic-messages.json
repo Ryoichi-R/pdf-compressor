@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "messages": {
+    "high-image-ratio-and-dpi": "高解像度スキャンの可能性が高いため画像縮小を推奨",
+    "image-ratio": "画像データの比率が高いため画像圧縮を検討",
+    "avg-dpi": "画像DPI中央値 {value}",
+    "tool-unavailable": "必要な外部ツールが利用できないため、この方式は実行できません",
+    "qpdf-unavailable": "qpdf がないため Safe モードの検証を開始できません",
+    "pdfinfo-unavailable": "pdfinfo がないためページ構造を確認できません",
+    "pdfimages-unavailable": "pdfimages がないため画像メトリクスを確認できません",
+    "signature-present": "電子署名付きPDFは既定で安全のため処理しません",
+    "feature-indeterminate": "PDF機能を判定できないため安全モードでは処理しません",
+    "encrypted": "暗号化PDFはパスワード処理の対象外です",
+    "validation-rejected": "圧縮後PDFの構文またはページ構造を確認できないため採用しません",
+    "media-box-mismatch": "圧縮後にページ外形が許容範囲を超えて変化しました",
+    "crop-box-mismatch": "圧縮後に表示・印刷範囲が許容範囲を超えて変化しました",
+    "rotate-mismatch": "圧縮後にページの向きが変化しました",
+    "page-count-mismatch": "圧縮後にページ数が変化しました",
+    "output-invalid": "出力先が利用可能なローカルドライブではありません",
+    "target-not-met": "目標容量以下の候補はありません。有効な最小候補を保存しました",
+    "ocr-unavailable": "OCRプロバイダーまたは選択言語が利用できません"
+  }
+}

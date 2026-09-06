@@ -1,0 +1,74 @@
+name: pdf-compressor-ci
+
+# pdf-compressor is Windows-only because it uses WinForms and native Windows
+# dependencies. CI therefore runs only on Windows.
+#
+# Integration and strict E2E validation require a locally built release
+# candidate with bundled tools. Those release checks remain fail-closed and are
+# performed before publishing a binary release.
+
+on:
+    pull_request:
+        paths:
+            - 'project/**'
+            - '.github/workflows/pdf-compressor-ci.yml'
+    push:
+        branches: [main]
+        paths:
+            - 'project/**'
+            - '.github/workflows/pdf-compressor-ci.yml'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+defaults:
+    run:
+        shell: pwsh
+
+jobs:
+    tests:
+        name: unit + coverage (windows)
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v7
+
+            - name: Install Pester 5
+              run: |
+                  $current = Get-Module -ListAvailable -Name Pester |
+                    Where-Object { $_.Version -ge [version]'5.5.0' }
+                  if (-not $current) {
+                    Install-Module Pester -Scope CurrentUser -MinimumVersion 5.5.0 -Force -SkipPublisherCheck
+                  }
+                  (Get-Module -ListAvailable -Name Pester | Sort-Object Version -Descending |
+                    Select-Object -First 1).Version.ToString()
+
+            - name: Unit suite
+              working-directory: project
+              run: pwsh -NoProfile -File _internal/run-tests.ps1 -Suite Unit
+
+            - name: Tier C0 coverage gate
+              working-directory: project
+              run: pwsh -NoProfile -File _internal/run-tests.ps1 -Suite Unit -CodeCoverage
+
+            - name: Upload coverage
+              if: always()
+              uses: actions/upload-artifact@v7
+              with:
+                  name: pdf-compressor-coverage
+                  path: project/coverage/coverage.xml
+                  if-no-files-found: warn
+
+    launcher-build:
+        name: launcher build (windows)
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-dotnet@v6
+              with:
+                  global-json-file: project/global.json
+
+            - name: Build launcher
+              working-directory: project
+              run: dotnet build PdfCompressor.slnx -c Release --nologo

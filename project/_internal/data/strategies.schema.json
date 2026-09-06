@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "pdf-compressor strategies",
+  "description": "Strategy thresholds and DPI parameters for select_strategy.ps1",
+  "type": "object",
+  "required": ["version", "allowed_dpi", "thresholds", "strategies"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "description": { "type": "string" },
+    "allowed_dpi": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 72, "maximum": 600 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "thresholds": {
+      "type": "object",
+      "required": ["image_ratio_low", "image_ratio_high", "dpi_high"],
+      "properties": {
+        "image_ratio_low": { "type": "number", "minimum": 0, "maximum": 1 },
+        "image_ratio_high": { "type": "number", "minimum": 0, "maximum": 1 },
+        "dpi_high": { "type": "integer", "minimum": 72, "maximum": 600 }
+      }
+    },
+    "strategies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["strategy_id", "tool"],
+        "properties": {
+          "strategy_id": {
+            "type": "string",
+            "enum": [
+              "qpdf-lossless",
+              "gs-downsample-150",
+              "gs-downsample-180",
+              "gs-downsample-120",
+              "gs-light-regenerate",
+              "gs-raster-low-quality",
+              "gs-raster-readable"
+            ]
+          },
+          "description": { "type": "string" },
+          "tool": { "type": "string", "enum": ["qpdf", "ghostscript", "lossy-raster"] },
+          "params": {
+            "type": "object",
+            "properties": {
+              "color_dpi": { "type": "integer", "minimum": 72, "maximum": 600 },
+              "gray_dpi": { "type": "integer", "minimum": 72, "maximum": 600 },
+              "raster_dpi": { "type": "integer", "minimum": 72, "maximum": 300 },
+              "jpeg_quality": { "type": "integer", "minimum": 1, "maximum": 100 }
+            }
+          },
+          "fallback": {
+            "description": "strategy_id to retry when this strategy produces no effect. Existence and acyclicity are enforced by semantic validation in Get-Strategies (JSON Schema cannot express self-referential enums).",
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

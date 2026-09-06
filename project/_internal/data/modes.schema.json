@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["version", "modes"],
+  "properties": {
+    "version": { "type": "string" },
+    "modes": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["mode_id", "label", "strategies", "allow_raster"],
+        "properties": {
+          "mode_id": { "enum": ["auto", "high-quality", "standard", "minimum-size"] },
+          "label": { "type": "string" },
+          "strategies": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "allow_raster": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

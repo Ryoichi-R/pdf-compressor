@@ -1,0 +1,166 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "PDF Compressor payload manifest",
+    "type": "object",
+    "required": ["schemaVersion", "productId", "payloads"],
+    "additionalProperties": false,
+    "properties": {
+        "schemaVersion": { "enum": [1, 2, 3] },
+        "productId": { "const": "pdf-compressor" },
+        "productVersion": { "type": "string", "minLength": 1 },
+        "releaseId": { "type": "string", "minLength": 1 },
+        "buildId": { "type": "string", "minLength": 1 },
+        "sourceDigest": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+        "dependencyDigest": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+        "sdkVersion": { "type": "string", "minLength": 1 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "determinismMode": { "const": "tree-digest-canonical" },
+        "correspondingSource": { "$ref": "#/$defs/archive" },
+        "payloads": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "win-x64": { "$ref": "#/$defs/payload" },
+                "win-arm64": { "$ref": "#/$defs/payload" }
+            }
+        }
+    },
+    "$defs": {
+        "payload": {
+            "type": "object",
+            "required": ["archive", "sha256", "length", "files"],
+            "additionalProperties": false,
+            "properties": {
+                "archive": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9._-]+\\.zip$"
+                },
+                "architecture": { "enum": ["x64", "arm64"] },
+                "sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+                "length": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 262144000
+                },
+                "treeDigest": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+                "toolVersions": {
+                    "type": "object",
+                    "required": [
+                        "powershell",
+                        "qpdf",
+                        "poppler",
+                        "ghostscript"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "powershell": { "type": "string", "minLength": 1 },
+                        "qpdf": { "type": "string", "minLength": 1 },
+                        "poppler": { "type": "string", "minLength": 1 },
+                        "ghostscript": { "type": "string", "minLength": 1 }
+                    }
+                },
+                "files": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "required": ["path", "sha256", "length"],
+                        "additionalProperties": false,
+                        "properties": {
+                            "path": { "type": "string", "minLength": 1 },
+                            "sha256": {
+                                "type": "string",
+                                "pattern": "^[A-F0-9]{64}$"
+                            },
+                            "length": { "type": "integer", "minimum": 0 }
+                        }
+                    }
+                },
+                "build": { "$ref": "#/$defs/build" }
+            }
+        },
+        "build": {
+            "type": "object",
+            "required": [
+                "buildId",
+                "sourceDigest",
+                "dependencyDigest",
+                "sdkVersion",
+                "createdAt",
+                "determinismMode",
+                "correspondingSource"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "buildId": { "type": "string", "minLength": 1 },
+                "sourceDigest": {
+                    "type": "string",
+                    "pattern": "^[A-F0-9]{64}$"
+                },
+                "dependencyDigest": {
+                    "type": "string",
+                    "pattern": "^[A-F0-9]{64}$"
+                },
+                "sdkVersion": { "type": "string", "minLength": 1 },
+                "createdAt": { "type": "string", "format": "date-time" },
+                "determinismMode": { "const": "tree-digest-canonical" },
+                "correspondingSource": { "$ref": "#/$defs/archive" }
+            }
+        },
+        "archive": {
+            "type": "object",
+            "required": ["archive", "sha256", "length"],
+            "additionalProperties": false,
+            "properties": {
+                "archive": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9._-]+\\.zip$"
+                },
+                "sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+                "length": { "type": "integer", "minimum": 1 }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "if": { "properties": { "schemaVersion": { "const": 2 } } },
+            "then": {
+                "required": [
+                    "productVersion",
+                    "buildId",
+                    "sourceDigest",
+                    "dependencyDigest",
+                    "sdkVersion",
+                    "createdAt",
+                    "determinismMode",
+                    "correspondingSource"
+                ],
+                "properties": {
+                    "payloads": {
+                        "additionalProperties": {
+                            "required": [
+                                "architecture",
+                                "treeDigest",
+                                "toolVersions"
+                            ],
+                            "not": { "required": ["build"] }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "if": { "properties": { "schemaVersion": { "const": 3 } } },
+            "then": {
+                "required": ["productVersion", "releaseId"],
+                "properties": {
+                    "payloads": {
+                        "additionalProperties": {
+                            "required": ["build"]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

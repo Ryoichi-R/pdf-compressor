@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "note": "依存アーカイブの取得先。完全性の正本は portable-dependencies.json の SHA-256 であり、このファイルは URL だけを持つ。URL が誤っていても Get-PortableDependencies.ps1 の SHA-256 照合で fail-closed になる。",
+  "artifacts": [
+    {
+      "artifact": "PowerShell-7.6.3-win-x64.zip",
+      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-x64.zip"
+    },
+    {
+      "artifact": "PowerShell-7.6.3-win-arm64.zip",
+      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-arm64.zip"
+    },
+    {
+      "artifact": "qpdf-12.3.2-msvc64.zip",
+      "url": "https://github.com/qpdf/qpdf/releases/download/v12.3.2/qpdf-12.3.2-msvc64.zip"
+    },
+    {
+      "artifact": "qpdf-12.3.2.tar.gz",
+      "url": "https://github.com/qpdf/qpdf/releases/download/v12.3.2/qpdf-12.3.2.tar.gz"
+    },
+    {
+      "artifact": "poppler-26.07.0.tar.xz",
+      "url": "https://poppler.freedesktop.org/poppler-26.07.0.tar.xz"
+    },
+    {
+      "artifact": "gs10071w64.exe",
+      "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10071/gs10071w64.exe"
+    },
+    {
+      "artifact": "ghostscript-10.07.1.tar.xz",
+      "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10071/ghostscript-10.07.1.tar.xz"
+    }
+  ]
+}

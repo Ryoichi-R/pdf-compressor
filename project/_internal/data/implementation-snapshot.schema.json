@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PDF Compressor implementation snapshot",
+  "type": "object",
+  "required": ["schemaVersion", "snapshotType", "createdAt", "workspacePolicy", "projectRoot", "backupRule", "files", "workspaceBackups", "payloadBaseline"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "snapshotType": { "const": "pdf-compressor-implementation-baseline" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "workspacePolicy": { "const": "non-git-filesystem-only" },
+    "projectRoot": { "const": "pdf-compressor/project" },
+    "backupRule": { "type": "string", "minLength": 1 },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "length", "sha256", "byteBackup"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "length": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "byteBackup": { "type": "boolean" }
+        }
+      }
+    },
+    "workspaceBackups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "length", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "length": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "payloadBaseline": { "type": ["object", "null"] }
+  }
+}

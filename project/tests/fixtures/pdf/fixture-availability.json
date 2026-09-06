@@ -1,0 +1,98 @@
+{
+    "schemaVersion": 1,
+    "classificationContract": [
+        "generated-required",
+        "curated-required",
+        "policy-only-deferred"
+    ],
+    "fixtures": [
+        {
+            "id": "text-vector",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "high-dpi-scan",
+            "availability": "generated-required",
+            "pc": ["PC-04", "PC-08"]
+        },
+        {
+            "id": "mixed-content",
+            "availability": "generated-required",
+            "pc": ["PC-04", "PC-08"]
+        },
+        {
+            "id": "already-optimized",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "encrypted",
+            "availability": "generated-required",
+            "generator": "bundled-qpdf",
+            "pc": ["PC-04", "PC-11"]
+        },
+        {
+            "id": "signed",
+            "availability": "curated-required",
+            "status": "available",
+            "file": "curated/dss-pdf-signed-original.pdf",
+            "provenance": "curated/dss-pdf-signed-original.provenance.json",
+            "pc": ["PC-03"]
+        },
+        {
+            "id": "acroform",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "xfa",
+            "availability": "policy-only-deferred",
+            "blocker": "no provenance-valid fixture or approved generator",
+            "pc": ["PC-04"]
+        },
+        {
+            "id": "attachments-outlines-links",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "tagged-javascript-layers",
+            "availability": "policy-only-deferred",
+            "blocker": "real fixture provenance and generation contract are not established",
+            "pc": ["PC-04"]
+        },
+        {
+            "id": "pdfa-pdfx",
+            "availability": "policy-only-deferred",
+            "blocker": "no conformance validator is in the approved dependency set",
+            "pc": ["PC-04"]
+        },
+        {
+            "id": "rotated-cropped-boxes",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "malformed-warning",
+            "availability": "generated-required",
+            "pc": ["PC-02", "PC-04"]
+        },
+        {
+            "id": "raster-explicit",
+            "availability": "generated-required",
+            "pc": ["PC-04", "PC-11"]
+        },
+        {
+            "id": "target-size",
+            "availability": "generated-required",
+            "pc": ["PC-14"]
+        },
+        {
+            "id": "ocr",
+            "availability": "policy-only-deferred",
+            "blocker": "provider is intentionally not bundled",
+            "pc": ["PC-15"]
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "description": "PDF compression strategy thresholds and parameters. Source of truth for select_strategy.ps1.",
+  "allowed_dpi": [72, 96, 120, 150, 180, 220, 300],
+  "thresholds": {
+    "image_ratio_low": 0.3,
+    "image_ratio_high": 0.7,
+    "dpi_high": 220
+  },
+  "strategies": [
+    {
+      "strategy_id": "qpdf-lossless",
+      "description": "Lossless qpdf optimization for text/vector-dominant or low-image PDFs.",
+      "tool": "qpdf",
+      "params": {},
+      "fallback": "gs-light-regenerate"
+    },
+    {
+      "strategy_id": "gs-downsample-150",
+      "description": "Ghostscript downsample for high-DPI scan-image-dominant PDFs.",
+      "tool": "ghostscript",
+      "params": {
+        "color_dpi": 150,
+        "gray_dpi": 150
+      },
+      "fallback": null
+    },
+    {
+      "strategy_id": "gs-downsample-180",
+      "description": "Ghostscript downsample for mixed-content PDFs.",
+      "tool": "ghostscript",
+      "params": {
+        "color_dpi": 180,
+        "gray_dpi": 180
+      },
+      "fallback": null
+    },
+    {
+      "strategy_id": "gs-downsample-120",
+      "description": "Ghostscript aggressive downsample for minimum-size mode.",
+      "tool": "ghostscript",
+      "params": {
+        "color_dpi": 120,
+        "gray_dpi": 120
+      },
+      "fallback": null
+    },
+    {
+      "strategy_id": "gs-light-regenerate",
+      "description": "Ghostscript light regenerate for low/mid-DPI scan PDFs (fallback when qpdf has no effect).",
+      "tool": "ghostscript",
+      "params": {
+        "color_dpi": 220,
+        "gray_dpi": 220
+      },
+      "fallback": null
+    },
+    {
+      "strategy_id": "gs-raster-low-quality",
+      "description": "Lossy full-page rasterization for vector/text-shaped PDFs that do not shrink with normal downsampling. Explicit opt-in only.",
+      "tool": "lossy-raster",
+      "params": {
+        "raster_dpi": 120,
+        "jpeg_quality": 45
+      },
+      "fallback": null
+    },
+    {
+      "strategy_id": "gs-raster-readable",
+      "description": "Lossy full-page rasterization with higher DPI and JPEG quality for small text readability. Explicit opt-in only.",
+      "tool": "lossy-raster",
+      "params": {
+        "raster_dpi": 220,
+        "jpeg_quality": 80
+      },
+      "fallback": null
+    }
+  ]
+}

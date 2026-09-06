@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <AssemblyName>PdfCompressor.App</AssemblyName>
+    <RootNamespace>PdfCompressor.Launcher</RootNamespace>
+    <Product>PDF Compressor</Product>
+    <AssemblyTitle>PDF Compressor Launcher</AssemblyTitle>
+    <Company>Ryoichi-R</Company>
+    <Authors>Ryoichi-R</Authors>
+    <Copyright>Copyright (c) 2026 Ryoichi-R</Copyright>
+  </PropertyGroup>
+</Project>

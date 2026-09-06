@@ -1,0 +1,24 @@
+# Installer build, staging, and acceptance outputs
+project/installer/_work/
+
+# Downloaded upstream archives are recreated from the pinned dependency ledger.
+project/third-party-source/*
+!project/third-party-source/README.md
+project/installer/dependency-evidence/**/gnupg-home/
+
+# Downloaded upstream archives are recreated from the pinned dependency ledger.
+project/third-party-source/*
+!project/third-party-source/README.md
+project/installer/dependency-evidence/**/gnupg-home/
+
+# .NET build outputs
+project/src/**/bin/
+project/src/**/obj/
+
+# Local runtime outputs and machine-specific configuration
+project/output/compress.log.jsonl
+project/_internal/data/tool-paths.json
+
+# Test and workspace-generated data
+project/coverage/
+project/_work/*.json
