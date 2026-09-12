@@ -1,4 +1,4 @@
-# Copyright (c) 2026 Ryoichi-R
+# Copyright (c) 2026 Ryoichi-Rice and contributors
 # Licensed under the MIT License.
 # See LICENSE in the repository root for the full license text.
 

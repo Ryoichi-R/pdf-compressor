@@ -60,7 +60,7 @@ GUIの出力先、戦略、モード、安全設定、目標bytes、上書き、
 
 ## ライセンス
 
-Copyright (c) 2026 Ryoichi-R
+Copyright (c) 2026 Ryoichi-Rice and contributors
 
 PDF Compressor の第一者コードは [MIT License](LICENSE) の条件で提供します。
 同梱する第三者コンポーネントには、それぞれのライセンスが適用されます。
