@@ -94,7 +94,7 @@ Describe 'root README contract' {
 
     It 'states the copyright holder and the MIT license' {
         $text = Get-Content -LiteralPath $script:rootReadmePath -Raw
-        $text | Should -Match 'Copyright \(c\) 2026 Ryoichi-R'
+        $text | Should -Match 'Copyright \(c\) 2026 Ryoichi-Rice and contributors'
         $text | Should -Match 'MIT License'
     }
 }

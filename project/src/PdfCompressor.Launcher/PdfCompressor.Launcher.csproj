@@ -11,8 +11,8 @@
     <RootNamespace>PdfCompressor.Launcher</RootNamespace>
     <Product>PDF Compressor</Product>
     <AssemblyTitle>PDF Compressor Launcher</AssemblyTitle>
-    <Company>Ryoichi-R</Company>
-    <Authors>Ryoichi-R</Authors>
+    <Company>Ryoichi-Rice</Company>
+    <Authors>Ryoichi-Rice</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright (c) 2026 Ryoichi-Rice and contributors</Copyright>
   </PropertyGroup>
