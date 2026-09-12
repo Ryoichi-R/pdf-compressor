@@ -43,7 +43,7 @@ installerはmanaged file変更前に、fresh=`2Enew+H`、update=`Enew+Ecurrent+H
 
 ## ライセンス
 
-Copyright (c) 2026 Ryoichi-R
+Copyright (c) 2026 Ryoichi-Rice and contributors
 
 PDF Compressor の第一者コードは [MIT License](LICENSE) の条件で提供する。
 同梱する第三者コンポーネントには、それぞれのライセンスが適用される。
