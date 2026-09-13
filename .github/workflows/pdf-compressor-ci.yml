@@ -11,11 +11,17 @@ on:
     pull_request:
         paths:
             - 'project/**'
+            - '.gitattributes'
+            - 'README.md'
+            - '*.bat'
             - '.github/workflows/pdf-compressor-ci.yml'
     push:
         branches: [main]
         paths:
             - 'project/**'
+            - '.gitattributes'
+            - 'README.md'
+            - '*.bat'
             - '.github/workflows/pdf-compressor-ci.yml'
     workflow_dispatch:
 

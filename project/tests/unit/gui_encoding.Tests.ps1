@@ -31,8 +31,8 @@ Describe 'editorconfig + gitattributes pin gui.ps1 encoding policy' {
             return
         }
         $ga = Get-Content -Raw -LiteralPath $script:gitAttrTop
-        $ga | Should -Match 'pdf-compressor/_internal/gui\.ps1'
-        $ga | Should -Match 'pdf-compressor/_internal/gui\.ps1\s+text\s+eol=crlf'
+        $ga | Should -Match 'project/_internal/gui\.ps1'
+        $ga | Should -Match 'project/_internal/gui\.ps1\s+text\s+eol=crlf'
         $ga | Should -Not -Match 'working-tree-encoding=UTF-8-BOM'
     }
 }

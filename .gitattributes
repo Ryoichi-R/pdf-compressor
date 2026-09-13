@@ -1,0 +1,4 @@
+# Keep installer text contracts independent of core.autocrlf.
+*.md text eol=lf
+*.bat text eol=crlf
+project/_internal/gui.ps1 text eol=crlf
