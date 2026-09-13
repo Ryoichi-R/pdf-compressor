@@ -20,7 +20,7 @@ Describe 'one-click installer structure' {
         $hidden = @((Get-ChildItem -LiteralPath $packageRoot -Force).Name |
             Where-Object { $_.StartsWith('.') })
         foreach ($entry in $hidden) {
-            $entry | Should -BeIn @('.git', '.github', '.gitignore')
+            $entry | Should -BeIn @('.git', '.gitattributes', '.github', '.gitignore')
         }
     }
 
