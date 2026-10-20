@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 2,
+  "runtime": "win-x64",
+  "dependencies": [
+    {
+      "name": "PowerShell",
+      "version": "7.6.3",
+      "artifact": "PowerShell-7.6.3-win-x64.zip",
+      "sha256": "07DDB0D00B660459560EF82A9841DA7705B27CD5DCCA5A0D7B025A98ECA29ECA",
+      "license": "MIT",
+      "provenance": "https://github.com/PowerShell/PowerShell/releases/tag/v7.6.3"
+    },
+    {
+      "name": "qpdf",
+      "version": "12.3.2",
+      "artifact": "qpdf-12.3.2-msvc64.zip",
+      "sha256": "8941870A604E7C87ED24566B038D46C24CE76616254D2383C578F60C0677F202",
+      "license": "Apache-2.0",
+      "provenance": "https://github.com/qpdf/qpdf/releases/tag/v12.3.2"
+    },
+    {
+      "name": "Poppler",
+      "version": "26.07.0",
+      "artifact": "poppler-26.07.0.tar.xz",
+      "sha256": "304832F48F8A47FDCA90C6B6D1F684E68F37C10C9A0726F345F4CA9DF4CA01E2",
+      "license": "GPL-2.0-or-later",
+      "provenance": "https://poppler.freedesktop.org/"
+    },
+    {
+      "name": "Ghostscript",
+      "version": "10.07.1",
+      "artifact": "gs10071w64.exe",
+      "sha256": "3A4C28D0AAC47AA7CCCD35A5932C55110376E9DBD966898DDE388B7FABA444A4",
+      "sourceArtifact": "ghostscript-10.07.1.tar.xz",
+      "sourceSha256": "1CDB766DE8DB8F1E589C817F09C5855EA5F65DFC8540E465A69AC14C18416025",
+      "license": "AGPL-3.0",
+      "provenance": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10071"
+    }
+  ],
+  "vcpkg": {
+    "builtinBaseline": "c1d80d9cb071c3f4a98c67c1196b137cc5b72918",
+    "triplet": "x64-windows",
+    "popplerOptions": [
+      "ENABLE_CPP=OFF",
+      "ENABLE_QT5=OFF",
+      "ENABLE_QT6=OFF",
+      "ENABLE_GLIB=OFF",
+      "ENABLE_CAIRO=OFF",
+      "ENABLE_NSS3=OFF",
+      "ENABLE_GPGME=OFF",
+      "ENABLE_LIBCURL=OFF",
+      "ENABLE_UTILS=ON"
+    ]
+  },
+  "commonSources": {
+    "qpdf": {
+      "version": "12.3.2",
+      "artifact": "qpdf-12.3.2.tar.gz",
+      "sha256": "6CBA2F9F2CD887D905FAEB99E0E51A307B217920D1BBF3E9CFBB2E8178A2DEDA",
+      "license": "Apache-2.0",
+      "provenance": "https://github.com/qpdf/qpdf/releases/tag/v12.3.2"
+    },
+    "Poppler": {
+      "version": "26.07.0",
+      "artifact": "poppler-26.07.0.tar.xz",
+      "sha256": "304832F48F8A47FDCA90C6B6D1F684E68F37C10C9A0726F345F4CA9DF4CA01E2",
+      "license": "GPL-2.0-or-later",
+      "provenance": "https://poppler.freedesktop.org/"
+    },
+    "Ghostscript": {
+      "version": "10.07.1",
+      "artifact": "ghostscript-10.07.1.tar.xz",
+      "sha256": "1CDB766DE8DB8F1E589C817F09C5855EA5F65DFC8540E465A69AC14C18416025",
+      "license": "AGPL-3.0",
+      "provenance": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10071"
+    }
+  },
+  "runtimes": {
+    "win-x64": {
+      "architecture": "x64",
+      "dependencies": [
+        {
+          "name": "PowerShell",
+          "version": "7.6.3",
+          "artifact": "PowerShell-7.6.3-win-x64.zip",
+          "sha256": "07DDB0D00B660459560EF82A9841DA7705B27CD5DCCA5A0D7B025A98ECA29ECA",
+          "license": "MIT",
+          "provenance": "https://github.com/PowerShell/PowerShell/releases/tag/v7.6.3"
+        },
+        {
+          "name": "qpdf",
+          "version": "12.3.2",
+          "artifact": "qpdf-12.3.2-msvc64.zip",
+          "sha256": "8941870A604E7C87ED24566B038D46C24CE76616254D2383C578F60C0677F202",
+          "license": "Apache-2.0",
+          "provenance": "https://github.com/qpdf/qpdf/releases/tag/v12.3.2"
+        },
+        {
+          "name": "Poppler",
+          "version": "26.07.0",
+          "artifact": "poppler-26.07.0.tar.xz",
+          "sha256": "304832F48F8A47FDCA90C6B6D1F684E68F37C10C9A0726F345F4CA9DF4CA01E2",
+          "license": "GPL-2.0-or-later",
+          "provenance": "https://poppler.freedesktop.org/"
+        },
+        {
+          "name": "Ghostscript",
+          "version": "10.07.1",
+          "artifact": "gs10071w64.exe",
+          "sha256": "3A4C28D0AAC47AA7CCCD35A5932C55110376E9DBD966898DDE388B7FABA444A4",
+          "sourceArtifact": "ghostscript-10.07.1.tar.xz",
+          "sourceSha256": "1CDB766DE8DB8F1E589C817F09C5855EA5F65DFC8540E465A69AC14C18416025",
+          "license": "AGPL-3.0",
+          "provenance": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10071"
+        }
+      ],
+      "vcpkg": {
+        "builtinBaseline": "c1d80d9cb071c3f4a98c67c1196b137cc5b72918",
+        "triplet": "x64-windows",
+        "popplerOptions": ["ENABLE_CPP=OFF", "ENABLE_QT5=OFF", "ENABLE_QT6=OFF", "ENABLE_GLIB=OFF", "ENABLE_CAIRO=OFF", "ENABLE_NSS3=OFF", "ENABLE_GPGME=OFF", "ENABLE_LIBCURL=OFF", "ENABLE_UTILS=ON"]
+      }
+    },
+    "win-arm64": {
+      "architecture": "arm64",
+      "dependencies": [
+        {
+          "name": "PowerShell",
+          "version": "7.6.3",
+          "artifact": "PowerShell-7.6.3-win-arm64.zip",
+          "sha256": "2ECE90557C370BB5EE03275EF41F2A49E26EA85DEFCF2052ACA32C20DADB62C2",
+          "license": "MIT",
+          "provenance": "https://github.com/PowerShell/PowerShell/releases/tag/v7.6.3",
+          "buildStatus": "official-binary-validated"
+        },
+        {
+          "name": "qpdf",
+          "version": "12.3.2",
+          "artifact": "qpdf-12.3.2-win-arm64-local-build.zip",
+          "artifactPath": "result/pdf-compressor/qpdf-arm64-spike-20260901/qpdf-12.3.2-win-arm64-local-build.zip",
+          "sha256": "8CE7BCCBB134FFAC0305BBC987C4F706A8EB727804DCA45CD04612101EF10AC1",
+          "sourceArtifact": "qpdf-12.3.2.tar.gz",
+          "sourceSha256": "6CBA2F9F2CD887D905FAEB99E0E51A307B217920D1BBF3E9CFBB2E8178A2DEDA",
+          "buildRecipe": "installer/dependencies/Build-QpdfArm64.ps1",
+          "buildRecipeSha256": "E169005CF71A89D843F614971ED23C10A9873052B4ECBE948184EA1112CE48B4",
+          "buildReceipt": "result/pdf-compressor/qpdf-arm64-spike-20260901/build-receipt-2.json",
+          "license": "Apache-2.0",
+          "provenance": "https://github.com/qpdf/qpdf/releases/tag/v12.3.2",
+          "buildStatus": "source-built-validated"
+        },
+        {
+          "name": "Poppler",
+          "version": "26.07.0",
+          "artifact": "poppler-26.07.0-win-arm64-local-build.zip",
+          "artifactPath": "result/pdf-compressor/poppler-arm64-spike-20260901/poppler-26.07.0-win-arm64-local-build.zip",
+          "sha256": "073986160BCD0886891EAFF40020DBE8E56B2F3886CC719F559211B3A66958F6",
+          "sourceArtifact": "poppler-26.07.0.tar.xz",
+          "sourceSha256": "304832F48F8A47FDCA90C6B6D1F684E68F37C10C9A0726F345F4CA9DF4CA01E2",
+          "buildRecipe": "installer/dependencies/Build-PopplerArm64.ps1",
+          "buildRecipeSha256": "C20A54EAA9BF4DCF0A69FE57A002243DF3599DF51A0403D9A369A9F763D22A10",
+          "buildReceipt": "result/pdf-compressor/poppler-arm64-spike-20260901/build-receipt-1.json",
+          "license": "GPL-2.0-or-later",
+          "provenance": "https://poppler.freedesktop.org/",
+          "buildStatus": "source-built-validated"
+        },
+        {
+          "name": "Ghostscript",
+          "version": "10.07.1",
+          "artifact": "ghostscript-10.07.1-win-arm64-local-build.zip",
+          "artifactPath": "result/pdf-compressor/ghostscript-arm64-spike-20260901/ghostscript-10.07.1-win-arm64-local-build.zip",
+          "sha256": "68014ED6514AA9DDA2F563B90FBED63BD77E563ECC351B40292A0F651FA459AD",
+          "sourceArtifact": "ghostscript-10.07.1.tar.xz",
+          "sourceSha256": "1CDB766DE8DB8F1E589C817F09C5855EA5F65DFC8540E465A69AC14C18416025",
+          "buildRecipe": "installer/dependencies/Build-GhostscriptArm64.ps1",
+          "buildRecipeSha256": "53E30863A70C0A7BA25BC4499C0DBA8DDB0A3F294CE8EFD73D0F44835843EE6E",
+          "buildReceipt": "result/pdf-compressor/ghostscript-arm64-spike-20260901/build-receipt-5.json",
+          "license": "AGPL-3.0",
+          "provenance": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10071",
+          "buildStatus": "source-built-validated"
+        }
+      ],
+      "vcpkg": {
+        "builtinBaseline": "c1d80d9cb071c3f4a98c67c1196b137cc5b72918",
+        "triplet": "arm64-windows",
+        "popplerOptions": ["ENABLE_CPP=OFF", "ENABLE_QT5=OFF", "ENABLE_QT6=OFF", "ENABLE_GLIB=OFF", "ENABLE_CAIRO=OFF", "ENABLE_NSS3=OFF", "ENABLE_GPGME=OFF", "ENABLE_LIBCURL=OFF", "ENABLE_UTILS=ON"]
+      }
+    }
+  }
+}

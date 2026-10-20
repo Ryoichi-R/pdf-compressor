@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["version", "raster_strategy_ids", "regeneration_strategy_ids", "required_detection_features", "feature_states", "features"],
+  "properties": {
+    "version": { "type": "string" },
+    "raster_strategy_ids": { "type": "array", "items": { "type": "string" } },
+    "regeneration_strategy_ids": { "type": "array", "items": { "type": "string" } },
+    "required_detection_features": { "type": "array", "items": { "type": "string" } },
+    "feature_states": { "type": "array", "items": { "enum": ["present", "absent", "indeterminate", "unavailable"] } },
+    "features": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["safe", "warn", "off"],
+        "properties": {
+          "safe": { "enum": ["skip", "confirm", "warn", "preserve", "record"] },
+          "warn": { "enum": ["skip", "confirm", "warn", "preserve", "record"] },
+          "off": { "enum": ["skip", "confirm", "warn", "preserve", "record"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

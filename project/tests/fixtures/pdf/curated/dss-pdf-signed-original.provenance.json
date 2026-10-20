@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "file": "dss-pdf-signed-original.pdf",
+  "bytes": 151126,
+  "sha256": "2F575AA24DCB5F15E5E81512D396D934A055830C5B8FE4B09868A6C9AF19A330",
+  "source": {
+    "project": "Digital Signature Services (DSS)",
+    "repository": "https://github.com/esig/dss",
+    "commit": "506d51994272e2a1d8c2ac93e76e70ab483ce3be",
+    "path": "dss-pades/src/test/resources/validation/pdf-signed-original.pdf",
+    "rawUrl": "https://raw.githubusercontent.com/esig/dss/506d51994272e2a1d8c2ac93e76e70ab483ce3be/dss-pades/src/test/resources/validation/pdf-signed-original.pdf"
+  },
+  "upstreamValidation": {
+    "testPath": "dss-pades/src/test/java/eu/europa/esig/dss/pades/validation/PAdESCorruptedSig.java",
+    "testMethod": "originalPAdESTest",
+    "assertion": "signature.isSignatureIntact() is true"
+  },
+  "localValidation": {
+    "qpdfVersion": "12.3.2",
+    "qpdfCheckExit": 0,
+    "signatureMarkers": ["/Sig", "/ByteRange", "SigFlags"]
+  },
+  "license": {
+    "spdx": "LGPL-2.1-only",
+    "upstreamDescriptor": "DSS-LICENSE-LGPL-2.1.txt",
+    "fullText": "DSS-LICENSE-LGPL21-FULL.txt",
+    "note": "The upstream root LICENSE assigns all DSS modules except sscd-mocca-adapter to LGPL-2.1; this fixture is from dss-pades."
+  },
+  "expected": {
+    "digitalSignature": "present",
+    "defaultAction": "skip",
+    "explicitAllowVerification": "warning",
+    "signaturePreservationClaimed": false
+  }
+}

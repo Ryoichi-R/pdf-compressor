@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "raster_strategy_ids": ["gs-raster-low-quality", "gs-raster-readable"],
+  "regeneration_strategy_ids": ["gs-downsample-120", "gs-downsample-150", "gs-downsample-180", "gs-light-regenerate", "gs-raster-low-quality", "gs-raster-readable"],
+  "required_detection_features": ["digital_signature", "encrypted"],
+  "feature_states": ["present", "absent", "indeterminate", "unavailable"],
+  "features": {
+    "digital_signature": { "safe": "skip", "warn": "confirm", "off": "warn" },
+    "encrypted": { "safe": "skip", "warn": "skip", "off": "warn" },
+    "acroform": { "safe": "warn", "warn": "warn", "off": "record" },
+    "xfa": { "safe": "warn", "warn": "warn", "off": "record" },
+    "attachments": { "safe": "preserve", "warn": "warn", "off": "record" },
+    "outlines": { "safe": "preserve", "warn": "warn", "off": "record" },
+    "links": { "safe": "preserve", "warn": "warn", "off": "record" },
+    "tagged": { "safe": "warn", "warn": "warn", "off": "record" },
+    "javascript": { "safe": "warn", "warn": "warn", "off": "record" },
+    "layers": { "safe": "warn", "warn": "warn", "off": "record" },
+    "pdfa": { "safe": "preserve", "warn": "warn", "off": "record" },
+    "pdfx": { "safe": "preserve", "warn": "warn", "off": "record" }
+  }
+}

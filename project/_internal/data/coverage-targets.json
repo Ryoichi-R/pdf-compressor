@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "tier": "C0",
+  "thresholdPercent": 90,
+  "runner": "_internal/run-tests.ps1",
+  "files": [
+    "_internal/compress.ps1",
+    "_internal/analyze_pdf.ps1",
+    "_internal/input-manifest.ps1",
+    "_internal/path-guard.ps1",
+    "_internal/output-path.ps1",
+    "_internal/work-dir.ps1",
+    "_internal/safety-policy.ps1",
+    "_internal/select_strategy.ps1",
+    "_internal/target-size.ps1",
+    "_internal/inspect_pdf_features.ps1",
+    "_internal/pdf-structure.ps1",
+    "_internal/validate_output.ps1",
+    "_internal/tool-resolver.ps1",
+    "_internal/tool-capabilities.ps1",
+    "_internal/invoke_qpdf.ps1",
+    "_internal/invoke_ghostscript.ps1",
+    "_internal/invoke_lossy_raster.ps1",
+    "_internal/jsonl-writer.ps1",
+    "_internal/log-format.ps1",
+    "installer/Compose-PayloadReleaseCandidate.ps1",
+    "installer/New-PayloadEntryBat.ps1",
+    "installer/Test-PayloadManifest.ps1"
+  ],
+  "excluded": [
+    {
+      "path": "_internal/gui.ps1",
+      "reason": "WinForms view is accepted by structural, event-bridge, and manual UI tests."
+    }
+  ],
+  "guiLogic": [
+    "_internal/gui-queue.ps1",
+    "_internal/gui-settings.ps1"
+  ]
+}

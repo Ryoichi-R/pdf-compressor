@@ -1,0 +1,34 @@
+{
+    "fixture_id": "minimal-text-v1",
+    "file": "minimal-text.pdf",
+    "sha256": "cec53e0e5269f661d52449c72a4b3e2c2e62dd3b591823eb16406504b077379c",
+    "source": "Generated locally for pdf-compressor E2E; no external document or personal data.",
+    "license": "CC0-1.0-equivalent local test fixture",
+    "expected": {
+        "page_count": 1,
+        "rotation": [0],
+        "has_text": true,
+        "contains_secret": false,
+        "features": {
+            "digital_signature": "absent",
+            "encrypted": "absent",
+            "acroform": "absent",
+            "attachments": "absent",
+            "outlines": "absent",
+            "links": "absent",
+            "javascript": "absent",
+            "tagged": "absent",
+            "layers": "absent",
+            "pdfa": "absent",
+            "pdfx": "absent"
+        },
+        "expected_mode": "auto",
+        "expected_strategy": "qpdf-lossless",
+        "preserve_structure": {
+            "page_count": 1,
+            "media_box": [0, 0, 612, 792],
+            "crop_box": [0, 0, 612, 792],
+            "rotation": [0]
+        }
+    }
+}

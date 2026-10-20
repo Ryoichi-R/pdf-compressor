@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "modes": [
+    { "mode_id": "auto", "label": "自動（おすすめ）", "strategies": ["qpdf-lossless", "gs-downsample-150", "gs-downsample-180", "gs-light-regenerate"], "allow_raster": false },
+    { "mode_id": "high-quality", "label": "高画質・無劣化優先", "strategies": ["qpdf-lossless", "gs-light-regenerate"], "allow_raster": false },
+    { "mode_id": "standard", "label": "標準（容量と可読性）", "strategies": ["qpdf-lossless", "gs-downsample-180"], "allow_raster": false },
+    { "mode_id": "minimum-size", "label": "最小容量", "strategies": ["qpdf-lossless", "gs-downsample-150", "gs-downsample-120"], "allow_raster": false }
+  ]
+}

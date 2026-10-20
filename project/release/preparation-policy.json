@@ -1,0 +1,152 @@
+{
+    "schema_version": "1.0",
+    "public_root": ".",
+    "profiles": ["source-repository", "binary-application"],
+    "documents": [
+        {
+            "path": "README.md",
+            "required_sections": [
+                "概要",
+                "動作要件",
+                "インストール",
+                "使用方法",
+                "設定",
+                "アンインストール",
+                "既知の制限",
+                "ライセンス",
+                "脆弱性の報告"
+            ]
+        },
+        {
+            "path": "LICENSE",
+            "required_sections": []
+        },
+        {
+            "path": ".github/SECURITY.md",
+            "required_sections": [
+                "脆弱性の報告",
+                "対象範囲",
+                "同梱依存の更新方針",
+                "完全性の検証（重要）",
+                "データの取り扱い"
+            ]
+        },
+        {
+            "path": "project/README.md",
+            "required_sections": [
+                "利用者向け導入",
+                "ライセンス",
+                "source checkoutの必要環境",
+                "セットアップ",
+                "使い方",
+                "安全ポリシーと検証",
+                "テスト",
+                "candidate build"
+            ]
+        },
+        {
+            "path": "project/THIRD-PARTY-NOTICES.md",
+            "required_sections": []
+        },
+        {
+            "path": "project/installer/DEPENDENCY-AUDIT.md",
+            "required_sections": ["ARM64 candidate provenance"]
+        }
+    ],
+    "candidate": {
+        "allowlist": ["**"],
+        "denylist": [
+            "artifacts",
+            "project/installer/_work",
+            "project/installer/payload",
+            "project/installer/candidates",
+            "project/installer/dependency-evidence/poppler-26.07.0/gnupg-home",
+            "project/third-party-source/*.zip",
+            "project/third-party-source/*.tar.gz",
+            "project/third-party-source/*.tar.xz",
+            "project/third-party-source/*.exe",
+            "project/src/**/bin",
+            "project/src/**/obj",
+            "project/output",
+            "project/_internal/data/tool-paths.json",
+            "project/coverage",
+            "project/_work",
+            "*.log",
+            "**/*.log",
+            ".vs",
+            ".vscode",
+            ".idea"
+        ],
+        "max_file_bytes": 10485760,
+        "max_total_bytes": 52428800,
+        "allow_reparse_points": false
+    },
+    "validation": {
+        "required_receipt_types": [
+            "quality",
+            "artifact",
+            "manual-acceptance",
+            "clean-verification"
+        ],
+        "expected_test_projects": ["pdf-compressor/project"],
+        "minimum_test_count": 423,
+        "allow_skips": true,
+        "minimum_line_coverage": 90,
+        "minimum_branch_coverage": null,
+        "require_formatter": true,
+        "require_linter": true,
+        "require_dependency_review": true
+    },
+    "manual_acceptance": [
+        {
+            "id": "installed-gui-real-interaction",
+            "requirement": "required",
+            "reason": "インストール済みx64版で起動、初回描画、入力追加、実行、結果表示、再描画を実機確認する。"
+        },
+        {
+            "id": "cooperative-cancel-and-retry",
+            "requirement": "required",
+            "reason": "長時間処理の協調中止、必要時の強制fallback、停止後の再実行を実機確認する。"
+        },
+        {
+            "id": "real-pdf-safety-and-visual-matrix",
+            "requirement": "required",
+            "reason": "実PDFで安全判定、圧縮結果、視覚品質、署名付きPDFの扱いを確認する。"
+        },
+        {
+            "id": "installer-isolated-update-rollback",
+            "requirement": "required",
+            "reason": "隔離先で新規導入、更新、拒否条件、設定保持、rollback、アンインストールを確認する。"
+        }
+    ],
+    "artifacts": [
+        {
+            "id": "portable-win-x64",
+            "path_pattern": "artifacts/pdf-compressor-win-x64.zip",
+            "runtime": "win-x64",
+            "architectures": ["x64", "unknown"],
+            "allowed_extensions": [".zip"],
+            "forbidden_names": [".env", "Desktop.ini", "Thumbs.db"],
+            "signature_policy": "optional-with-disclosure",
+            "unsigned_disclosure_path": "README.md",
+            "debug_symbols": "forbidden"
+        },
+        {
+            "id": "corresponding-source-win-x64",
+            "path_pattern": "artifacts/pdf-compressor-corresponding-source-win-x64.zip",
+            "runtime": "source",
+            "architectures": ["any"],
+            "allowed_extensions": [".zip"],
+            "forbidden_names": [".env", "Desktop.ini", "Thumbs.db"],
+            "signature_policy": "not-applicable",
+            "unsigned_disclosure_path": null,
+            "debug_symbols": "allowed"
+        }
+    ],
+    "integrity": {
+        "require_hashes": true,
+        "require_sbom": false,
+        "require_dependency_review": true,
+        "require_clean_install": true
+    }
+}

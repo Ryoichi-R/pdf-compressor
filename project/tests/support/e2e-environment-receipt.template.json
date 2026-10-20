@@ -1,0 +1,18 @@
+{
+    "schemaVersion": 1,
+    "mode": "hermetic-installed-candidate",
+    "candidateManifest": "<workspace-relative-path>",
+    "candidateBuildId": "<manifest-build-id>",
+    "installRoot": "<redacted-workspace-relative-path>",
+    "controllerPowerShell": "<version>",
+    "bundledPowerShell": "<version-and-sha256>",
+    "tools": {
+        "qpdf": "<version-and-sha256>",
+        "poppler": "<version-and-sha256>",
+        "ghostscript": "<version-and-sha256>"
+    },
+    "pathFallbackObserved": false,
+    "startedAt": "<iso-8601>",
+    "completedAt": "<iso-8601>",
+    "result": "<PASS|FAIL>"
+}
